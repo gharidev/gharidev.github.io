@@ -2,10 +2,11 @@
 const typingText = document.getElementById('typingText');
 const phrases = [
     'Backend Developer',
-    'Python Specialist',
     'API Architect',
     'Problem Solver',
-    'Technical Lead'
+    'Quick Learner',
+    'Tech Enthusiast',
+    'Python Specialist',
 ];
 
 let phraseIndex = 0;
@@ -36,9 +37,10 @@ function typeEffect() {
 
 typeEffect();
 
+const navbar = document.getElementById('navbar');
+
 // Navbar scroll effect
 window.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar');
     if (window.scrollY > 100) {
         navbar.classList.add('scrolled');
     } else {
@@ -46,10 +48,18 @@ window.addEventListener('scroll', () => {
     }
 });
 
+function updateHomePadding() {
+    const homeSection = document.getElementById('home');
+    const navbarHeight = navbar.offsetHeight;
+    homeSection.style.paddingTop = `${navbarHeight + 10}px`;
+}
+
+window.addEventListener('resize', updateHomePadding);
+document.addEventListener('DOMContentLoaded', updateHomePadding);
+
 // Hamburger menu functionality
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
-const navbar = document.getElementById('navbar');
 
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
@@ -60,9 +70,9 @@ hamburger.addEventListener('click', () => {
         navbar.classList.add('scrolled');
     } else {
         // Only remove scrolled class if not actually scrolled
-        if (window.scrollY <= 100) {
-            navbar.classList.remove('scrolled');
-        }
+            if (window.scrollY <= 100) {
+                navbar.classList.remove('scrolled');
+            }
     }
 });
 
@@ -73,9 +83,9 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         navLinks.classList.remove('active');
 
         // Remove scrolled class if not actually scrolled
-        if (window.scrollY <= 100) {
-            navbar.classList.remove('scrolled');
-        }
+            if (window.scrollY <= 100) {
+                navbar.classList.remove('scrolled');
+            }
     });
 });
 
